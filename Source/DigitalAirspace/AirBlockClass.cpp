@@ -8,6 +8,7 @@
 
 const int MAX_LEVEL = 6;
 
+//空域网格初始化，分割整片空域为固定数量的最大网格，GridDimensions的xyz分别是三个方向上的网格数量
 AirBlockClass::AirBlockClass(UWorld* w)
 {
     world = w;
@@ -98,7 +99,7 @@ void AirBlockClass::UpdateGridFromWorld()
 }
 
 
-
+//扫描网格内障碍物函数
 void AirBlockClass::DetectingObstacles(AirBlock& cell)
 {
     TArray<FOverlapResult> Overlaps;
@@ -120,7 +121,8 @@ void AirBlockClass::DetectingObstacles(AirBlock& cell)
         // Overlaps数组中现在包含所有与指定盒体重叠的组件/actor信息
         //UE_LOG(LogTemp, Log, TEXT("找到了不可通行区块"));
         for (auto& ac : Overlaps) {
-            //UE_LOG(LogTemp, Log, TEXT("actor为%s"), *(ac.Actor.Get()->GetFName().ToString()));
+            
+            //检测障碍物tag，以分辨是否是电塔
             if (ac.Actor.Get()->Tags.Num()>0) {
                 cell.towerid = TCHAR_TO_UTF8(*ac.Actor.Get()->GetFName().ToString());
                 UE_LOG(LogTemp, Log, TEXT("actor有tag，为%s"), *(ac.Actor.Get()->GetFName().ToString()));
@@ -163,7 +165,7 @@ void DrawDebug(const AirBlockClass::AirBlock& a,UWorld& w) {
                 FVector(a.size * 0.5f),
                 Color,
                 false,
-                0.2f,
+                0.2f,//显示时间
                 0,
                 10.0f
             );

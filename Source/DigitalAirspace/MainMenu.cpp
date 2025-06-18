@@ -260,9 +260,10 @@ void UMainMenu::NativeTick(const FGeometry& MyGeometry, float InDeltaTime) {
     }
 }
 
+// 获取配置
 void UMainMenu::GetUserInI()
 {
-    // 获取配置
+    
     UUserConfig* Config = GetMutableDefault<UUserConfig>();
     // 创建配置文件
     Config->SaveConfig();
@@ -275,6 +276,7 @@ void UMainMenu::GetUserInI()
 }
 
 
+//UE转经纬度
 void UMainMenu::UE_to_Latitude_Longitude() {
     float x = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation().X;
     float y = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation().Y;
@@ -312,6 +314,7 @@ FVector UMainMenu::Latitude_Longitude_to_UE(FVector f)
     return r;
 }
 
+//更改基础位置信息
 void UMainMenu::Change_BaseCoordinate() {
     base_x = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation().X;
     base_y = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation().Y;
@@ -329,6 +332,7 @@ void UMainMenu::Change_BaseCoordinate() {
     
 }
 
+//监控文件夹
 void UMainMenu::AutoLoadPoint()
 {
     /*FString WatchDir;

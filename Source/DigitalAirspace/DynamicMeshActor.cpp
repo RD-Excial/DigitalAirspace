@@ -34,9 +34,6 @@ void ADynamicMeshActor::CreateMesh(const TArray<FVector>& Vertices, const TArray
     TArray<FVector2D> UVs;
     TArray<FColor> VertexColors;
     TArray<FProcMeshTangent> Tangents;
-
-    // Generate Normals, UVs, Tangents, and Vertex Colors if needed (optional)
-
     // 创建网格部分
     try
     {
