@@ -1,0 +1,10 @@
+# 不上传 Binaries 和 Saved
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vscode/
+.idea/
+.vs/
+*.sln
